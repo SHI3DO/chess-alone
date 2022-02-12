@@ -2,6 +2,7 @@ import chessentity
 
 
 def calculate(array: list):
+    returnarray = []
     blackscore = 0
     whitescore = 0
     for i in range(len(array)):
@@ -14,5 +15,7 @@ def calculate(array: list):
                 blackscore += score
             else:
                 pass
-    print(whitescore)
-    print(blackscore)
+
+    returnarray.append(whitescore)
+    returnarray.append(blackscore)
+    return returnarray
