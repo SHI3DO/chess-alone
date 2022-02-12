@@ -10,5 +10,5 @@ for i in range(8):
 
 print(heuristic.calculate(playboard))
 
-print(chessrules.wheretogo(playboard, 'black', 'pawn', '2'))
+print(chessrules.wheretogo(playboard, 'white', 'pawn', '1'))
 
