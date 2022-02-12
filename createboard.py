@@ -13,6 +13,7 @@ def create():
                       'black:knight:2', 'black:rook:2']
     botpawnarray = ['black:pawn:1', 'black:pawn:2', 'black:pawn:3', 'black:pawn:4', 'black:pawn:5', 'black:pawn:6', 'black:pawn:7',
                     'black:pawn:8']
+
     playboard.append(playerarray)
     playboard.append(pawnarray)
     for i in range(4):
