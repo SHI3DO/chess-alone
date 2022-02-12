@@ -1,6 +1,6 @@
 def create():
     playboard = []
-    zeroarray = ['0:0', '0:0', '0:0', '0:0', '0:0', '0:0', '0:0', '0:0', ]
+    zeroarray = ['black:rook:1', '0:0', 'black:rook:1', '0:0', '0:0', 'black:rook:1', '0:0', '0:0', ]
     playerarray = ['white:rook:1', 'white:knight:1', 'white:bishop:1', 'white:king:1', 'white:queen:1', 'white:bishop:2',
                    'white:knight:2',
                    'white:rook:2']
