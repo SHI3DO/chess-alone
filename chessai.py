@@ -1,16 +1,17 @@
 from pprint import pprint
 import chessrules
 import boardprinter
+import heuristic
 import copy
 
-def chessai(array):
-    nextgenarray = []
 
+def chessai(array, color:str):
+    nextgenarray = []
 
     myplayer = []
     for i in range(len(array)):
         for j in range(len(array[i])):
-            if str(array[i][j]).split(':')[0] == 'white':
+            if str(array[i][j]).split(':')[0] == color:
                 myplayer.append(array[i][j])
 
     returnvalarray = []
@@ -32,7 +33,7 @@ def chessai(array):
                     y = j
                     break
 
-        returnvalarray[k].append([x,y])
+        returnvalarray[k].append([x, y])
 
     for k in range(0, len(returnvalarray)):
         if len(returnvalarray[k][1]) > 0:
@@ -48,8 +49,6 @@ def chessai(array):
                             y = j
                             break
 
-
-                n = 8
                 tmptmptmparray = copy.deepcopy(array)
 
                 tmptmptmparray[x][y], tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]] = \
@@ -58,11 +57,17 @@ def chessai(array):
                 nextgenarray.append(tmptmptmparray)
                 print("\n\n")
 
-
     pprint(returnvalarray)
 
     print("------------------\n\n")
     for i in range(0, len(nextgenarray)):
         print(i)
         boardprinter.doprint(nextgenarray[i])
+        print(heuristic.calculate(nextgenarray[i]))
         print("\n\n")
+
+    return nextgenarray
+
+
+
+
