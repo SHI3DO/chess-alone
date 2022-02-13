@@ -5,8 +5,8 @@ def create():
                    'white:knight:2',
                    'white:rook:2']
     zeroarray1 = ['0:0:A1', '0:0:A2', '0:0:A3', '0:0:A4', '0:0:A5', '0:0:A6', '0:0:A7', '0:0:A8']
-    zeroarray2 = ['0:0:B1', '0:0:B2', '0:0:B3', '0:0:B4', '0:0:B5', '0:0:B6', '0:0:B7', '0:0:B8']
-    zeroarray3 = ['0:0:C1', '0:0:C2', '0:0:C3', '0:0:C4', '0:0:C5', '0:0:C6', '0:0:C7', '0:0:C8']
+    zeroarray2 = ['0:0:B1', '0:0:B2', 'white:bishop:3', '0:0:B4', '0:0:B5', '0:0:B6', '0:0:B7', '0:0:B8']
+    zeroarray3 = ['0:0:C1', '0:0:C2', '0:0:C3', '0:0:C4', '0:0:C5', '0:0:C6', 'black:bishop:3', '0:0:C8']
     zeroarray4 = ['0:0:D1', '0:0:D2', '0:0:D3', '0:0:D4', '0:0:D5', '0:0:D6', '0:0:D7', '0:0:D8']
     pawnarray = ['white:pawn:1', 'white:pawn:2', 'white:pawn:3', 'white:pawn:4', 'white:pawn:5', 'white:pawn:6',
                  'white:pawn:7',
