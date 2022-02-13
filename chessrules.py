@@ -482,6 +482,7 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                     break
         else:
             print('something went wrong')
+            
     else:
         print('something went wrong')
 
