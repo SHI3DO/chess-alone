@@ -9,7 +9,7 @@ boardprinter.doprint(playboard)
 print(heuristic.calculate(playboard))
 
 
-for i in range(1, 7):
-    print("black", i,  chessrules.wheretogo(playboard, 'black', 'knight', i))
+for i in range(1, 9):
+    print(i,  chessrules.wheretogo(playboard, 'white', 'pawn', i))
 print(heuristic.calculate(playboard))
 
