@@ -482,7 +482,16 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                     break
         else:
             print('something went wrong')
-            
+
+    elif name == 'rook':
+        print('')
+
+    elif name == 'queen':
+        print('')
+
+    elif name == 'king':
+        print('')
+
     else:
         print('something went wrong')
 
