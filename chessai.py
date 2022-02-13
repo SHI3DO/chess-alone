@@ -56,9 +56,9 @@ def chessai(array, color:str):
 
                 nextgenarray.append(tmptmptmparray)
 
-    pprint(returnvalarray)
+    #pprint(returnvalarray)
 
-    print("------------------\n\n")
+    #print("------------------\n\n")
     for i in range(0, len(nextgenarray)):
         #print(i)
         #boardprinter.doprint(nextgenarray[i])

@@ -484,13 +484,13 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
             print('something went wrong')
 
     elif name == 'rook':
-        print('')
+        pass
 
     elif name == 'queen':
-        print('')
+        pass
 
     elif name == 'king':
-        print('')
+        pass
 
     else:
         print('something went wrong')
