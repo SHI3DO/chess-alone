@@ -1,17 +1,15 @@
 import createboard
 import heuristic
 import chessrules
+import boardprinter
 
 # 보드 만들기
 playboard = createboard.create()
-
-for i in range(8):
-    print(playboard[i])
-
+boardprinter.doprint(playboard)
 print(heuristic.calculate(playboard))
 
 
-for i in range(1, 8):
-    print("white", chessrules.wheretogo(playboard, 'white', 'pawn', i))
+for i in range(1, 7):
+    print("black", i,  chessrules.wheretogo(playboard, 'black', 'knight', i))
 print(heuristic.calculate(playboard))
 
