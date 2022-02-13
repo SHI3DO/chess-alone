@@ -55,16 +55,16 @@ def chessai(array, color:str):
                     tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]], tmptmptmparray[x][y]
 
                 nextgenarray.append(tmptmptmparray)
-                print("\n\n")
 
     pprint(returnvalarray)
 
     print("------------------\n\n")
     for i in range(0, len(nextgenarray)):
-        print(i)
-        boardprinter.doprint(nextgenarray[i])
-        print(heuristic.calculate(nextgenarray[i]))
-        print("\n\n")
+        #print(i)
+        #boardprinter.doprint(nextgenarray[i])
+        #print(heuristic.calculate(nextgenarray[i]))
+        #print("\n\n")
+        pass
 
     return nextgenarray
 
