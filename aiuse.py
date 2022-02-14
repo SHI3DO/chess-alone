@@ -137,7 +137,7 @@ def calc(playboard):
 
     upperarray = copy.deepcopy(fiftharray[heuristicarraycounter[c][0]][heuristicarraycounter[c][1]])
     print(heuristic.calculate(upperarray))
-    boardprinter.doprint(upperarray)
+    #boardprinter.doprint(upperarray)
     print('----------')
 
     loc = []
@@ -145,11 +145,9 @@ def calc(playboard):
         for j in range(0, len(fiftharray[i])):
             if fiftharray[i][j] == upperarray:
                 loc.append(i)
-                print('found')
                 break
 
-    boardprinter.doprint((fiftharrayinput[loc[0]]))
-    print('----------')
+    #boardprinter.doprint((fiftharrayinput[loc[0]]))
     previousarray = copy.deepcopy(fiftharrayinput[loc[0]])
 
 
@@ -158,11 +156,9 @@ def calc(playboard):
         for j in range(0, len(fourtharray[i])):
             if fourtharray[i][j] == previousarray:
                 loc.append(i)
-                print('found')
                 break
 
-    boardprinter.doprint(fourtharrayinput[loc[0]])
-    print('----------')
+    #boardprinter.doprint(fourtharrayinput[loc[0]])
     previousarray.clear()
 
     previousarray = copy.deepcopy(fourtharrayinput[loc[0]])
@@ -172,16 +168,14 @@ def calc(playboard):
         for j in range(0, len(thirdarray[i])):
             if thirdarray[i][j] == previousarray:
                 loc.append(i)
-                print('found')
                 break
 
-    boardprinter.doprint(thirdarrayinput[loc[0]])
-    print('----------')
+    #boardprinter.doprint(thirdarrayinput[loc[0]])
     previousarray.clear()
     previousarray = copy.deepcopy(thirdarrayinput[loc[0]])
 
     # pprint(heuristicarray)
-    f = open('./log.txt', 'w')
-    f.write(str(heuristicarray))
+    #f = open('./log.txt', 'w')
+    #f.write(str(heuristicarray))
 
     return previousarray
