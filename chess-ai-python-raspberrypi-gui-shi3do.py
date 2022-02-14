@@ -20,6 +20,12 @@ class ChessGUI(QWidget):
         vbox.addWidget(Line2,0,1)
         statusbox.setLayout(vbox)
 
+        runbox = QGroupBox('Input')
+        vbox = QGridLayout()
+        runbutton = QPushButton('Run')
+        vbox.addWidget(runbutton)
+        runbox.setLayout(vbox)
+
 
         groupbox = QGroupBox('Board')
         zero_zero_button = QPushButton('0-0')
@@ -172,6 +178,7 @@ class ChessGUI(QWidget):
         grid = QGridLayout()
         grid.addWidget(statusbox,0,0)
         grid.addWidget(groupbox, 1, 0)
+        grid.addWidget(runbox, 2,0)
         self.setLayout(grid)
 
 
