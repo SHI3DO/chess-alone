@@ -12,7 +12,9 @@ boardprinter.doprint(playboard)
 print(heuristic.calculate(playboard))
 print('---------------')
 
-aiuse.calc(playboard)
+nextarray = aiuse.calc(playboard)
 
-for i in range(1, 3):
-    print(i, chessrules.wheretogo(playboard, 'black', 'rook', i))
+boardprinter.doprint(nextarray)
+
+'''for i in range(1, 3):
+    print(i, chessrules.wheretogo(playboard, 'black', 'rook', i))'''

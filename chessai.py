@@ -57,9 +57,9 @@ def chessai(array, color: str):
                 print('------')'''
 
                 if not f'{str(tmptmptmparray[x][y]).split(":")[0]}:{str(tmptmptmparray[x][y]).split(":")[1]}' == '0:0':
-                    boardprinter.doprint(tmptmptmparray)
+                    '''boardprinter.doprint(tmptmptmparray)
                     print('바꿀 칸', tmptmptmparray[x][y])  # 이게 바꿀 칸
-                    print('움직일 말', tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]])  # 이게 움직일 말
+                    print('움직일 말', tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]])  # 이게 움직일 말'''
 
                     tmptmptmparray[x][y], tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]] = \
                         tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]], tmptmptmparray[x][y]
@@ -70,10 +70,10 @@ def chessai(array, color: str):
 
                     tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]] = f'0:0:{str(rand_str)}'
 
-                    print('바뀐 칸', tmptmptmparray[x][y])  # 이게 바뀐 칸
+                    '''print('바뀐 칸', tmptmptmparray[x][y])  # 이게 바뀐 칸
                     print('움직여진 말', tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]])  # 이게 움직여진 칸
                     boardprinter.doprint(tmptmptmparray)
-                    print('------')
+                    print('------')'''
 
                 else:
                     tmptmptmparray[x][y], tmptmptmparray[returnvalarray[k][2][0]][returnvalarray[k][2][1]] = \
