@@ -12,6 +12,12 @@ class ChessGUI(QWidget):
         self.initUI()
 
     def initUI(self):
+        selectbox = QGroupBox('Selection')
+        vbox = QGridLayout()
+        Line0 = QLineEdit()
+        vbox.addWidget(Line0)
+        selectbox.setLayout(vbox)
+
         statusbox = QGroupBox('Status')
         vbox = QGridLayout()
         Line1 = QLineEdit()
@@ -22,8 +28,12 @@ class ChessGUI(QWidget):
 
         runbox = QGroupBox('Input')
         vbox = QGridLayout()
+        targetbutton = QPushButton('Target')
+        posbutton = QPushButton('Pos')
         runbutton = QPushButton('Run')
-        vbox.addWidget(runbutton)
+        vbox.addWidget(targetbutton,0,0)
+        vbox.addWidget(posbutton,0,1)
+        vbox.addWidget(runbutton,0,2)
         runbox.setLayout(vbox)
 
 
@@ -176,9 +186,10 @@ class ChessGUI(QWidget):
         groupbox.setLayout(vbox)
 
         grid = QGridLayout()
-        grid.addWidget(statusbox,0,0)
-        grid.addWidget(groupbox, 1, 0)
-        grid.addWidget(runbox, 2,0)
+        grid.addWidget(selectbox,0,0)
+        grid.addWidget(statusbox,1,0)
+        grid.addWidget(groupbox, 2, 0)
+        grid.addWidget(runbox, 3,0)
         self.setLayout(grid)
 
 
