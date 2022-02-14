@@ -484,6 +484,124 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
             print('something went wrong')
 
     elif name == 'rook':
+        if color == 'white':
+            downloopx = 7 - x
+            uploopx = x
+            rightloopy = 7 - y
+            leftloopy = y
+            up = []
+            down = []
+            right = []
+            left = []
+
+            # 오른쪽
+            for num in range(1, rightloopy + 1):
+                right.append(array[x][y + num])
+
+            # 왼쪽
+            for num in range(1, leftloopy + 1):
+                left.append(array[x][y-num])
+
+            # 위쪽
+            for num in range(1, uploopx + 1):
+                right.append(array[x - num][y])
+
+            # 아래쪽
+            for num in range(1, downloopx + 1):
+                left.append(array[x + num][y])
+
+            for i in range(0, len(right)):
+                if str(right[i]).split(':')[0] != 'white':
+                    usearray.append(right[i])
+                    if str(right[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(left)):
+                if str(left[i]).split(':')[0] != 'white':
+                    usearray.append(left[i])
+                    if str(left[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(up)):
+                if str(up[i]).split(':')[0] != 'white':
+                    usearray.append(up[i])
+                    if str(up[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(down)):
+                if str(down[i]).split(':')[0] != 'white':
+                    usearray.append(down[i])
+                    if str(down[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+        elif color == 'black':
+            downloopx = 7 - x
+            uploopx = x
+            rightloopy = 7 - y
+            leftloopy = y
+            up = []
+            down = []
+            right = []
+            left = []
+
+            # 오른쪽
+            for num in range(1, rightloopy + 1):
+                right.append(array[x][y + num])
+
+            # 왼쪽
+            for num in range(1, leftloopy + 1):
+                left.append(array[x][y - num])
+
+            # 위쪽
+            for num in range(1, uploopx + 1):
+                right.append(array[x - num][y])
+
+            # 아래쪽
+            for num in range(1, downloopx + 1):
+                left.append(array[x + num][y])
+
+            for i in range(0, len(right)):
+                if str(right[i]).split(':')[0] != 'black':
+                    usearray.append(right[i])
+                    if str(right[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(left)):
+                if str(left[i]).split(':')[0] != 'black':
+                    usearray.append(left[i])
+                    if str(left[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(up)):
+                if str(up[i]).split(':')[0] != 'black':
+                    usearray.append(up[i])
+                    if str(up[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(down)):
+                if str(down[i]).split(':')[0] != 'black':
+                    usearray.append(down[i])
+                    if str(down[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+        else:
+            print('something went wrong')
         pass
 
     elif name == 'queen':
