@@ -99,9 +99,17 @@ def calc(playboard):
 
     cls()
     print('calculating max benefit for white')
-    maxheu = max(sizeheuristicarray)
-    print('calculating min benefit for black')
-    minheu = max(blacksizeheuristicarray)
+    if len(sizeheuristicarray) > 0:
+        maxheu = max(sizeheuristicarray)
+        print('calculating min benefit for black')
+    else:
+        print(sizeheuristicarray)
+
+    if len(blacksizeheuristicarray) > 0:
+        minheu = max(blacksizeheuristicarray)
+    else:
+        print(blacksizeheuristicarray)
+
     print('max', maxheu)
     print('min', minheu)
 
