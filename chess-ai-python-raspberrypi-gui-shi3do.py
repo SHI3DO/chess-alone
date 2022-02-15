@@ -229,6 +229,16 @@ class ChessGUI(QWidget):
         two_six_button.clicked.connect(lambda: self.two_six())
         two_seven_button.clicked.connect(lambda: self.two_seven())
 
+        three_zero_button.clicked.connect(lambda: self.three_zero())
+        three_one_button.clicked.connect(lambda: self.three_one())
+        three_two_button.clicked.connect(lambda: self.three_two())
+        three_three_button.clicked.connect(lambda: self.three_three())
+        three_four_button.clicked.connect(lambda: self.three_four())
+        three_five_button.clicked.connect(lambda: self.three_five())
+        three_six_button.clicked.connect(lambda: self.three_six())
+        three_seven_button.clicked.connect(lambda: self.three_seven())
+
+    # ////////////////////////////////////////////////////
     def zero_zero(self):
         self.Line0.setText(f'{str(self.array[0][0])}')
 
@@ -253,6 +263,7 @@ class ChessGUI(QWidget):
     def zero_seven(self):
         self.Line0.setText(f'{str(self.array[0][7])}')
 
+    # ////////////////////////////////////////////////////
     def one_zero(self):
         self.Line0.setText(f'{str(self.array[1][0])}')
 
@@ -277,6 +288,7 @@ class ChessGUI(QWidget):
     def one_seven(self):
         self.Line0.setText(f'{str(self.array[1][7])}')
 
+    # ////////////////////////////////////////////////////
     def two_zero(self):
         self.Line0.setText(f'{str(self.array[2][0])}')
 
@@ -300,6 +312,31 @@ class ChessGUI(QWidget):
 
     def two_seven(self):
         self.Line0.setText(f'{str(self.array[2][7])}')
+
+# ////////////////////////////////////////////////////
+    def three_zero(self):
+        self.Line0.setText(f'{str(self.array[3][0])}')
+
+    def three_one(self):
+        self.Line0.setText(f'{str(self.array[3][1])}')
+
+    def three_two(self):
+        self.Line0.setText(f'{str(self.array[3][2])}')
+
+    def three_three(self):
+        self.Line0.setText(f'{str(self.array[3][3])}')
+
+    def three_four(self):
+        self.Line0.setText(f'{str(self.array[3][4])}')
+
+    def three_five(self):
+        self.Line0.setText(f'{str(self.array[3][5])}')
+
+    def three_six(self):
+        self.Line0.setText(f'{str(self.array[3][6])}')
+
+    def three_seven(self):
+        self.Line0.setText(f'{str(self.array[3][7])}')
 
 
 if __name__ == "__main__":
