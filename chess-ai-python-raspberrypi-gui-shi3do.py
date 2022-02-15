@@ -12,6 +12,7 @@ import aimove
 import boardprinter
 import createboard
 import heuristic
+import chessvisualizer
 
 playboard = createboard.create()
 
@@ -287,6 +288,7 @@ class ChessGUI(QWidget):
         seven_six_button.clicked.connect(lambda: self.seven_six())
         seven_seven_button.clicked.connect(lambda: self.seven_seven())
 
+
     def runbtnftn(self):
         self.log.append(self.array)
         self.log.append(heuristic.calculate(self.array))
@@ -336,6 +338,8 @@ class ChessGUI(QWidget):
             print(i)
             if i % 2 == 0:
                 boardprinter.doprint(self.log[i])
+
+        chessvisualizer.visual(self.array)
 
     # ////////////////////////////////////////////////////
     def zero_zero(self):
@@ -543,7 +547,7 @@ if __name__ == "__main__":
     gui = QStackedWidget()
     main = ChessGUI(playboard)
     gui.addWidget(main)
-    gui.setWindowTitle("chess-ai-python-raspberrypi-shi3do")
+    gui.setWindowTitle("chess-ai-python-raspberrypi by SHI3DO")
     gui.resize(1000, 400)
     gui.setWindowIcon(QIcon("./src/chess-ai-python-raspberrypi-logo.png"))
     gui.show()
