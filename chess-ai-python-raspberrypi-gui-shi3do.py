@@ -1,11 +1,17 @@
+import copy
+import string
 import sys
+import random
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5 import *
 
+import aimove
+import boardprinter
 import createboard
+import heuristic
 
 playboard = createboard.create()
 
@@ -15,8 +21,14 @@ class ChessGUI(QWidget):
         super().__init__()
         self.initUI()
         self.array = array
+        self.log = []
 
     def initUI(self):
+        global x
+        global y
+        global x2
+        global y2
+
         self.Line0 = QLineEdit()
         self.Line1 = QLineEdit()
         self.Line2 = QLineEdit()
@@ -46,6 +58,7 @@ class ChessGUI(QWidget):
         exitbutton.clicked.connect(lambda: QCoreApplication.exit())
         targetbutton.clicked.connect(lambda: self.Line1.setText(self.Line0.text()))
         posbutton.clicked.connect(lambda: self.Line2.setText(self.Line0.text()))
+        runbutton.clicked.connect(lambda: self.runbtnftn())
 
         groupbox = QGroupBox('Board')
         zero_zero_button = QPushButton('0-0')
@@ -238,6 +251,92 @@ class ChessGUI(QWidget):
         three_six_button.clicked.connect(lambda: self.three_six())
         three_seven_button.clicked.connect(lambda: self.three_seven())
 
+        four_zero_button.clicked.connect(lambda: self.four_zero())
+        four_one_button.clicked.connect(lambda: self.four_one())
+        four_two_button.clicked.connect(lambda: self.four_two())
+        four_three_button.clicked.connect(lambda: self.four_three())
+        four_four_button.clicked.connect(lambda: self.four_four())
+        four_five_button.clicked.connect(lambda: self.four_five())
+        four_six_button.clicked.connect(lambda: self.four_six())
+        four_seven_button.clicked.connect(lambda: self.four_seven())
+
+        five_zero_button.clicked.connect(lambda: self.five_zero())
+        five_one_button.clicked.connect(lambda: self.five_one())
+        five_two_button.clicked.connect(lambda: self.five_two())
+        five_three_button.clicked.connect(lambda: self.five_three())
+        five_four_button.clicked.connect(lambda: self.five_four())
+        five_five_button.clicked.connect(lambda: self.five_five())
+        five_six_button.clicked.connect(lambda: self.five_six())
+        five_seven_button.clicked.connect(lambda: self.five_seven())
+
+        six_zero_button.clicked.connect(lambda: self.six_zero())
+        six_one_button.clicked.connect(lambda: self.six_one())
+        six_two_button.clicked.connect(lambda: self.six_two())
+        six_three_button.clicked.connect(lambda: self.six_three())
+        six_four_button.clicked.connect(lambda: self.six_four())
+        six_five_button.clicked.connect(lambda: self.six_five())
+        six_six_button.clicked.connect(lambda: self.six_six())
+        six_seven_button.clicked.connect(lambda: self.six_seven())
+
+        seven_zero_button.clicked.connect(lambda: self.seven_zero())
+        seven_one_button.clicked.connect(lambda: self.seven_one())
+        seven_two_button.clicked.connect(lambda: self.seven_two())
+        seven_three_button.clicked.connect(lambda: self.seven_three())
+        seven_four_button.clicked.connect(lambda: self.seven_four())
+        seven_five_button.clicked.connect(lambda: self.seven_five())
+        seven_six_button.clicked.connect(lambda: self.seven_six())
+        seven_seven_button.clicked.connect(lambda: self.seven_seven())
+
+    def runbtnftn(self):
+        self.log.append(self.array)
+        self.log.append(heuristic.calculate(self.array))
+        for i in range(0, len(self.log)):
+            print(i)
+            if i % 2 == 0:
+                boardprinter.doprint(self.log[i])
+
+        target = self.Line1.text()
+        pos = self.Line2.text()
+
+        for i in range(len(self.array)):
+            for j in range(len(self.array[i])):
+                if self.array[i][j] == target:
+                    x = i
+                    y = j
+                    break
+
+        for i in range(len(self.array)):
+            for j in range(len(self.array[i])):
+                if self.array[i][j] == pos:
+                    x2 = i
+                    y2 = j
+                    break
+
+        if not f'{str(self.array[x][y]).split(":")[0]}:{str(self.array[x][y]).split(":")[1]}' == '0:0':
+            self.array[x][y], self.array[int(x2)][int(y2)] = self.array[int(x2)][int(y2)], \
+                                                             self.array[x][y]
+
+            rand_str = ''
+            for i in range(6):
+                rand_str += str(random.choice(string.ascii_lowercase + string.digits))
+
+            self.array[x][y] = f'0:0:{str(rand_str)}'
+        else:
+            self.array[x][y], self.array[int(x2)][int(y2)] = self.array[int(x2)][int(y2)], \
+                                                             self.array[x][y]
+
+        boardprinter.doprint(self.array)
+        print('---------------------------------------')
+        nextarray = aimove.move(self.array)
+        self.array = copy.deepcopy(nextarray)
+
+        self.log.append(self.array)
+        self.log.append(heuristic.calculate(self.array))
+        for i in range(0, len(self.log)):
+            print(i)
+            if i % 2 == 0:
+                boardprinter.doprint(self.log[i])
+
     # ////////////////////////////////////////////////////
     def zero_zero(self):
         self.Line0.setText(f'{str(self.array[0][0])}')
@@ -313,7 +412,7 @@ class ChessGUI(QWidget):
     def two_seven(self):
         self.Line0.setText(f'{str(self.array[2][7])}')
 
-# ////////////////////////////////////////////////////
+    # ////////////////////////////////////////////////////
     def three_zero(self):
         self.Line0.setText(f'{str(self.array[3][0])}')
 
@@ -337,6 +436,106 @@ class ChessGUI(QWidget):
 
     def three_seven(self):
         self.Line0.setText(f'{str(self.array[3][7])}')
+
+    # ////////////////////////////////////////////////////
+    def four_zero(self):
+        self.Line0.setText(f'{str(self.array[4][0])}')
+
+    def four_one(self):
+        self.Line0.setText(f'{str(self.array[4][1])}')
+
+    def four_two(self):
+        self.Line0.setText(f'{str(self.array[4][2])}')
+
+    def four_three(self):
+        self.Line0.setText(f'{str(self.array[4][3])}')
+
+    def four_four(self):
+        self.Line0.setText(f'{str(self.array[4][4])}')
+
+    def four_five(self):
+        self.Line0.setText(f'{str(self.array[4][5])}')
+
+    def four_six(self):
+        self.Line0.setText(f'{str(self.array[4][6])}')
+
+    def four_seven(self):
+        self.Line0.setText(f'{str(self.array[4][7])}')
+
+    # ////////////////////////////////////////////////////
+    def five_zero(self):
+        self.Line0.setText(f'{str(self.array[5][0])}')
+
+    def five_one(self):
+        self.Line0.setText(f'{str(self.array[5][1])}')
+
+    def five_two(self):
+        self.Line0.setText(f'{str(self.array[5][2])}')
+
+    def five_three(self):
+        self.Line0.setText(f'{str(self.array[5][3])}')
+
+    def five_four(self):
+        self.Line0.setText(f'{str(self.array[5][4])}')
+
+    def five_five(self):
+        self.Line0.setText(f'{str(self.array[5][5])}')
+
+    def five_six(self):
+        self.Line0.setText(f'{str(self.array[5][6])}')
+
+    def five_seven(self):
+        self.Line0.setText(f'{str(self.array[5][7])}')
+
+    # ////////////////////////////////////////////////////
+    def six_zero(self):
+        self.Line0.setText(f'{str(self.array[6][0])}')
+
+    def six_one(self):
+        self.Line0.setText(f'{str(self.array[6][1])}')
+
+    def six_two(self):
+        self.Line0.setText(f'{str(self.array[6][2])}')
+
+    def six_three(self):
+        self.Line0.setText(f'{str(self.array[6][3])}')
+
+    def six_four(self):
+        self.Line0.setText(f'{str(self.array[6][4])}')
+
+    def six_five(self):
+        self.Line0.setText(f'{str(self.array[6][5])}')
+
+    def six_six(self):
+        self.Line0.setText(f'{str(self.array[6][6])}')
+
+    def six_seven(self):
+        self.Line0.setText(f'{str(self.array[6][7])}')
+
+    # ////////////////////////////////////////////////////
+    def seven_zero(self):
+        self.Line0.setText(f'{str(self.array[7][0])}')
+
+    def seven_one(self):
+        self.Line0.setText(f'{str(self.array[7][1])}')
+
+    def seven_two(self):
+        self.Line0.setText(f'{str(self.array[7][2])}')
+
+    def seven_three(self):
+        self.Line0.setText(f'{str(self.array[7][3])}')
+
+    def seven_four(self):
+        self.Line0.setText(f'{str(self.array[7][4])}')
+
+    def seven_five(self):
+        self.Line0.setText(f'{str(self.array[7][5])}')
+
+    def seven_six(self):
+        self.Line0.setText(f'{str(self.array[7][6])}')
+
+    def seven_seven(self):
+        self.Line0.setText(f'{str(self.array[7][7])}')
 
 
 if __name__ == "__main__":
