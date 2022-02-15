@@ -51,6 +51,6 @@ def ask(array):
 ask(playboard)
 '''
 
-
-for i in range(1, 3):
-    print(i, chessrules.wheretogo(playboard, 'white', 'queen', i))
+boardprinter.doprint(playboard)
+for i in range(1, 5):
+    print(i, chessrules.wheretogo(playboard, 'white', 'king', i))

@@ -19,8 +19,8 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                 if x == 1:
                     if f'{str(array[x + 1][y]).split(":")[0]}:{str(array[x + 1][y]).split(":")[1]}' == '0:0':
                         usearray.append(array[x + 1][y])
-                    if f'{str(array[x + 2][y]).split(":")[0]}:{str(array[x + 2][y]).split(":")[1]}' == '0:0':
-                        usearray.append(array[x + 2][y])
+                        if f'{str(array[x + 2][y]).split(":")[0]}:{str(array[x + 2][y]).split(":")[1]}' == '0:0':
+                            usearray.append(array[x + 2][y])
 
                 # 처음 시작이 아닌 나머지 경우
                 else:
@@ -53,8 +53,8 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                 if x == 6:
                     if f'{str(array[x - 1][y]).split(":")[0]}:{str(array[x - 1][y]).split(":")[1]}' == '0:0':
                         usearray.append(array[x - 1][y])
-                    if f'{str(array[x - 2][y]).split(":")[0]}:{str(array[x - 2][y]).split(":")[1]}' == '0:0':
-                        usearray.append(array[x - 2][y])
+                        if f'{str(array[x - 2][y]).split(":")[0]}:{str(array[x - 2][y]).split(":")[1]}' == '0:0':
+                            usearray.append(array[x - 2][y])
 
                 # 처음 시작이 아닌 나머지 경우
                 else:
@@ -504,11 +504,11 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
 
             # 위쪽
             for num in range(1, uploopx + 1):
-                right.append(array[x - num][y])
+                up.append(array[x - num][y])
 
             # 아래쪽
             for num in range(1, downloopx + 1):
-                left.append(array[x + num][y])
+                down.append(array[x + num][y])
 
             for i in range(0, len(right)):
                 if str(right[i]).split(':')[0] != 'white':
@@ -562,11 +562,11 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
 
             # 위쪽
             for num in range(1, uploopx + 1):
-                right.append(array[x - num][y])
+                up.append(array[x - num][y])
 
             # 아래쪽
             for num in range(1, downloopx + 1):
-                left.append(array[x + num][y])
+                down.append(array[x + num][y])
 
             for i in range(0, len(right)):
                 if str(right[i]).split(':')[0] != 'black':
@@ -631,11 +631,11 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
 
             # 위쪽
             for num in range(1, uploopx + 1):
-                right.append(array[x - num][y])
+                up.append(array[x - num][y])
 
             # 아래쪽
             for num in range(1, downloopx + 1):
-                left.append(array[x + num][y])
+                down.append(array[x + num][y])
 
             for i in range(0, len(right)):
                 if str(right[i]).split(':')[0] != 'white':
@@ -831,7 +831,114 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
         else:
             print('something went wrong')
     elif name == 'king':
-        pass
+        if color == 'white':
+            up = []
+            down = []
+            right = []
+            left = []
+
+            # 오른쪽
+            if y < 7:
+                right.append(array[x][y + 1])
+
+            # 왼쪽
+            if y > 1:
+                left.append(array[x][y - 1])
+
+            # 위쪽
+            if x > 1:
+                up.append(array[x - 1][y])
+
+            # 아래쪽
+            if x < 7:
+                down.append(array[x + 1][y])
+
+            for i in range(0, len(right)):
+                if str(right[i]).split(':')[0] != 'white':
+                    usearray.append(right[i])
+                    if str(right[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(left)):
+                if str(left[i]).split(':')[0] != 'white':
+                    usearray.append(left[i])
+                    if str(left[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(up)):
+                if str(up[i]).split(':')[0] != 'white':
+                    usearray.append(up[i])
+                    if str(up[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(down)):
+                if str(down[i]).split(':')[0] != 'white':
+                    usearray.append(down[i])
+                    if str(down[i]).split(':')[0] == 'black':
+                        break
+                else:
+                    break
+        elif color == 'black':
+            up = []
+            down = []
+            right = []
+            left = []
+
+            # 오른쪽
+            if y < 7:
+                right.append(array[x][y + 1])
+
+            # 왼쪽
+            if y > 1:
+                left.append(array[x][y - 1])
+
+            # 위쪽
+            if x > 1:
+                up.append(array[x - 1][y])
+
+            # 아래쪽
+            if x < 7:
+                down.append(array[x + 1][y])
+
+            for i in range(0, len(right)):
+                if str(right[i]).split(':')[0] != 'black':
+                    usearray.append(right[i])
+                    if str(right[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(left)):
+                if str(left[i]).split(':')[0] != 'black':
+                    usearray.append(left[i])
+                    if str(left[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(up)):
+                if str(up[i]).split(':')[0] != 'black':
+                    usearray.append(up[i])
+                    if str(up[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+
+            for i in range(0, len(down)):
+                if str(down[i]).split(':')[0] != 'black':
+                    usearray.append(down[i])
+                    if str(down[i]).split(':')[0] == 'white':
+                        break
+                else:
+                    break
+        else:
+            print('something went wrong')
 
     else:
         print('something went wrong')
