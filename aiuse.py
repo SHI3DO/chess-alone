@@ -5,9 +5,12 @@ import heuristic
 from pprint import pprint
 import copy
 
+import logger
+
 
 def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    f = open('./src/res/log.txt', 'w')
+    f.close()
 
 
 def calc(playboard):
@@ -16,41 +19,41 @@ def calc(playboard):
     secondarray = []
     secondarray = chessai.chessai(playboard, 'white')
 
-    print('first turn')
+    logger.log('first turn')
     thirdarray = []
     thirdarrayinput = []
     for i in range(0, len(secondarray)):
         c += 1
         if c % 1000 == 999:
-            print(c)
+            logger.log(c)
         thirdarray.append(chessai.chessai(secondarray[i], 'black'))
         thirdarrayinput.append(secondarray[i])
 
     cls()
     counter.append(c)
     c = 0
-    print('second turn')
+    logger.log('second turn')
     fourtharray = []
     fourtharrayinput = []
     for i in range(0, len(thirdarray)):
         for j in range(0, len(thirdarray[i])):
             c += 1
             if c % 1000 == 999:
-                print(c)
+                logger.log(c)
             fourtharray.append(chessai.chessai(thirdarray[i][j], 'white'))
             fourtharrayinput.append(thirdarray[i][j])
     cls()
     counter.append(c)
     c = 0
 
-    print('third turn')
+    logger.log('third turn')
     fiftharray = []
     fiftharrayinput = []
     for i in range(0, len(fourtharray)):
         for j in range(0, len(fourtharray[i])):
             c += 1
             if c % 1000 == 999:
-                print(c)
+                logger.log(c)
             fiftharray.append(chessai.chessai(fourtharray[i][j], 'black'))
             fiftharrayinput.append(fourtharray[i][j])
 
@@ -73,11 +76,12 @@ def calc(playboard):
     '''
 
     for i in range(0, len(counter)):
-        print(counter[i])
+        logger.log(counter[i])
 
     # boardprinter.ver2doprint(fiftharray)
 
     print('calculating score for each turn')
+    logger.log('calculating score for each turn')
 
     heuristicarray = []
     heuristicarraycounter = []
@@ -90,6 +94,7 @@ def calc(playboard):
             heuristicarraycounter.append([i, j])
 
     print(c, 'cases')
+    logger.log(f'{c} cases')
     c = 0
     cls()
 
@@ -99,9 +104,11 @@ def calc(playboard):
 
     cls()
     print('calculating max benefit for white')
+    logger.log('calculating max benefit for white')
     if len(sizeheuristicarray) > 0:
         maxheu = max(sizeheuristicarray)
         print('calculating min benefit for black')
+        logger.log('calculating min benefit for black')
     else:
         print(sizeheuristicarray)
 
@@ -111,7 +118,9 @@ def calc(playboard):
         print(blacksizeheuristicarray)
 
     print('max', maxheu)
+    logger.log(f'max {maxheu}')
     print('min', minheu)
+    logger.log(f'min {minheu}')
 
     # 봇의 이득이 최고가 되는 경우
     maxarray = []

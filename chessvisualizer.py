@@ -1,10 +1,11 @@
 from PIL import Image, ImageDraw
 
+import logger
+
 
 def visual(array):
     width = len(array)
     height = len(array[0])
-    print(width, height)
 
     Size = 150
     CSize = 130
@@ -29,10 +30,8 @@ def visual(array):
         for j in range(0, height):
             drawx = (SizeW * 33 / 35) / width
             drawy = (SizeH * 33 / 35) / height
-            print(str(array[i][j]))
             if str(array[i][j]).split(':')[0] == 'black':
                 if str(array[i][j]).split(':')[1] == 'pawn':
-                    print(i, j)
                     canvas.paste(im=blackpawn, box=(int(SizeW * 1 / 35 + drawx * j), int(SizeH * 1 / 35 + drawy * i)))
 
                 if str(array[i][j]).split(':')[1] == 'king':
@@ -52,7 +51,6 @@ def visual(array):
 
             elif str(array[i][j]).split(':')[0] == 'white':
                 if str(array[i][j]).split(':')[1] == 'pawn':
-                    print(i, j)
                     canvas.paste(im=whitepawn, box=(int(SizeW * 1 / 35 + drawx * j), int(SizeH * 1 / 35 + drawy * i)))
 
                 if str(array[i][j]).split(':')[1] == 'king':
@@ -72,4 +70,3 @@ def visual(array):
             else:
                 canvas.paste(im=x, box=(int(SizeW * 1 / 35 + drawx * j), int(SizeH * 1 / 35 + drawy * i)))
     canvas.save(f"./src/res/chess.png", "png")
-    canvas.show()

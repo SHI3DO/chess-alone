@@ -1,3 +1,6 @@
+import logger
+
+
 def wheretogo(array: list, color: str, name: str, identifier: str):
     playerid = f'{color}:{name}:{identifier}'
     x = 0
@@ -80,7 +83,7 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                         if str(array[x - 1][y + 1]).split(':')[0] != 'black':
                             usearray.append(array[x - 1][y + 1])
         else:
-            print('something went wrong')
+            logger.log('something went wrong')
 
     # 나이트일 경우
     elif name == 'knight':
@@ -481,7 +484,7 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                 else:
                     break
         else:
-            print('something went wrong')
+            logger.log('something went wrong')
 
     elif name == 'rook':
         if color == 'white':
@@ -601,7 +604,7 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                     break
 
         else:
-            print('something went wrong')
+            logger.log('something went wrong')
         pass
 
     elif name == 'queen':
@@ -829,7 +832,7 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                 else:
                     break
         else:
-            print('something went wrong')
+            logger.log('something went wrong')
     elif name == 'king':
         if color == 'white':
             up = []
@@ -938,9 +941,9 @@ def wheretogo(array: list, color: str, name: str, identifier: str):
                 else:
                     break
         else:
-            print('something went wrong')
+            logger.log('something went wrong')
 
     else:
-        print('something went wrong')
+        logger.log('something went wrong')
 
     return list(set(usearray))

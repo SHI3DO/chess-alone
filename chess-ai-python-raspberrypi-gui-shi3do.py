@@ -1,4 +1,5 @@
 import copy
+import os
 import string
 import sys
 import random
@@ -13,6 +14,7 @@ import boardprinter
 import createboard
 import heuristic
 import chessvisualizer
+import logger
 
 playboard = createboard.create()
 
@@ -20,6 +22,17 @@ playboard = createboard.create()
 class ChessGUI(QWidget):
     def __init__(self, array):
         super().__init__()
+        self.timer = QTimer(self)
+        self.timer.start(1000)
+        self.timer.timeout.connect(lambda: self.timeout())
+        self.Line0 = QLineEdit()
+        self.Line1 = QLineEdit()
+        self.Line2 = QLineEdit()
+        self.consolettbox = QTextEdit()
+        self.pixlabel = QLabel()
+        self.board = QPixmap()
+        self.board.load('./src/res/chess.png')
+        self.board = self.board.scaled(800, 800)
         self.initUI()
         self.array = array
 
@@ -29,9 +42,7 @@ class ChessGUI(QWidget):
         global x2
         global y2
 
-        self.Line0 = QLineEdit()
-        self.Line1 = QLineEdit()
-        self.Line2 = QLineEdit()
+        self.pixlabel.setPixmap(self.board)
         selectbox = QGroupBox('Selection')
         vbox = QGridLayout()
         vbox.addWidget(self.Line0)
@@ -208,11 +219,28 @@ class ChessGUI(QWidget):
         vbox.addWidget(seven_seven_button, 7, 7)
         groupbox.setLayout(vbox)
 
+        consolebox = QGroupBox('Console')
+        vbox = QGridLayout()
+        vbox.addWidget(self.consolettbox)
+        consolebox.setLayout(vbox)
+
+        rightgroupbox = QGroupBox('User')
+        vbox = QGridLayout()
+        vbox.addWidget(selectbox)
+        vbox.addWidget(statusbox)
+        vbox.addWidget(groupbox)
+        vbox.addWidget(consolebox)
+        vbox.addWidget(runbox)
+        rightgroupbox.setLayout(vbox)
+
+        boardbox = QGroupBox('Board')
+        vbox = QGridLayout()
+        vbox.addWidget(self.pixlabel)
+        boardbox.setLayout(vbox)
+
         grid = QGridLayout()
-        grid.addWidget(selectbox, 0, 0)
-        grid.addWidget(statusbox, 1, 0)
-        grid.addWidget(groupbox, 2, 0)
-        grid.addWidget(runbox, 3, 0)
+        grid.addWidget(boardbox,0,0)
+        grid.addWidget(rightgroupbox, 0,1)
         self.setLayout(grid)
 
         zero_zero_button.clicked.connect(lambda: self.zero_zero())
@@ -287,6 +315,18 @@ class ChessGUI(QWidget):
         seven_six_button.clicked.connect(lambda: self.seven_six())
         seven_seven_button.clicked.connect(lambda: self.seven_seven())
 
+    def timeout(self):
+        try:
+            self.board.load('./src/res/chess.png')
+            self.board = self.board.scaled(800, 800)
+            self.pixlabel.setPixmap(self.board)
+            f = open('./src/res/log.txt')
+            content = f.read()
+            f.close()
+            self.consolettbox.setText(content)
+        except Exception as e:
+            logger.log(e)
+
     def runbtnftn(self):
 
         target = self.Line1.text()
@@ -326,6 +366,7 @@ class ChessGUI(QWidget):
 
         chessvisualizer.visual(self.array)
         print('heuristic', heuristic.calculate(self.array))
+        logger.log(f'heuristic {heuristic.calculate(self.array)}')
 
     # ////////////////////////////////////////////////////
     def zero_zero(self):
@@ -529,12 +570,16 @@ class ChessGUI(QWidget):
 
 
 if __name__ == "__main__":
+    f = open('./src/res/log.txt', 'w')
+    f.close()
+
     app = QApplication(sys.argv)
     gui = QStackedWidget()
     main = ChessGUI(playboard)
+    chessvisualizer.visual(playboard)
     gui.addWidget(main)
     gui.setWindowTitle("chess-ai-python-raspberrypi by SHI3DO")
-    gui.resize(1000, 400)
+    gui.resize(1600, 400)
     gui.setWindowIcon(QIcon("./src/chess-ai-python-raspberrypi-logo.png"))
     gui.show()
     app.exec_()
