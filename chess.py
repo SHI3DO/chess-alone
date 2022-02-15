@@ -1,6 +1,7 @@
 import random
 import string
 
+import chessvisualizer
 import createboard
 import heuristic
 import chessrules
@@ -15,7 +16,7 @@ playboard = createboard.create()
 
 log = []
 
-
+'''
 def ask(array):
     log.append(array)
     for i in range(0, len(log)):
@@ -48,6 +49,7 @@ def ask(array):
 
 
 ask(playboard)
-
+'''
+chessvisualizer.visual(playboard)
 '''for i in range(1, 3):
     print(i, chessrules.wheretogo(playboard, 'black', 'rook', i))'''
