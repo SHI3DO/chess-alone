@@ -50,6 +50,7 @@ def ask(array):
 
 ask(playboard)
 '''
-chessvisualizer.visual(playboard)
-'''for i in range(1, 3):
-    print(i, chessrules.wheretogo(playboard, 'black', 'rook', i))'''
+
+
+for i in range(1, 3):
+    print(i, chessrules.wheretogo(playboard, 'white', 'queen', i))

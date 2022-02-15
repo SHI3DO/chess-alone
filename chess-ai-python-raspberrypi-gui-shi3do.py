@@ -22,7 +22,6 @@ class ChessGUI(QWidget):
         super().__init__()
         self.initUI()
         self.array = array
-        self.log = []
 
     def initUI(self):
         global x
@@ -288,14 +287,7 @@ class ChessGUI(QWidget):
         seven_six_button.clicked.connect(lambda: self.seven_six())
         seven_seven_button.clicked.connect(lambda: self.seven_seven())
 
-
     def runbtnftn(self):
-        self.log.append(self.array)
-        self.log.append(heuristic.calculate(self.array))
-        for i in range(0, len(self.log)):
-            print(i)
-            if i % 2 == 0:
-                boardprinter.doprint(self.log[i])
 
         target = self.Line1.text()
         pos = self.Line2.text()
@@ -332,14 +324,8 @@ class ChessGUI(QWidget):
         nextarray = aimove.move(self.array)
         self.array = copy.deepcopy(nextarray)
 
-        self.log.append(self.array)
-        self.log.append(heuristic.calculate(self.array))
-        for i in range(0, len(self.log)):
-            print(i)
-            if i % 2 == 0:
-                boardprinter.doprint(self.log[i])
-
         chessvisualizer.visual(self.array)
+        print('heuristic', heuristic.calculate(self.array))
 
     # ////////////////////////////////////////////////////
     def zero_zero(self):
