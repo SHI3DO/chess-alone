@@ -5,25 +5,30 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5 import *
 
+import createboard
+
+playboard = createboard.create()
+
 
 class ChessGUI(QWidget):
-    def __init__(self):
+    def __init__(self, array):
         super().__init__()
         self.initUI()
+        self.array = array
 
     def initUI(self):
+        self.Line0 = QLineEdit()
+        self.Line1 = QLineEdit()
+        self.Line2 = QLineEdit()
         selectbox = QGroupBox('Selection')
         vbox = QGridLayout()
-        Line0 = QLineEdit()
-        vbox.addWidget(Line0)
+        vbox.addWidget(self.Line0)
         selectbox.setLayout(vbox)
 
         statusbox = QGroupBox('Status')
         vbox = QGridLayout()
-        Line1 = QLineEdit()
-        Line2 = QLineEdit()
-        vbox.addWidget(Line1, 0,0 )
-        vbox.addWidget(Line2,0,1)
+        vbox.addWidget(self.Line1, 0, 0)
+        vbox.addWidget(self.Line2, 0, 1)
         statusbox.setLayout(vbox)
 
         runbox = QGroupBox('Input')
@@ -31,11 +36,16 @@ class ChessGUI(QWidget):
         targetbutton = QPushButton('Target')
         posbutton = QPushButton('Pos')
         runbutton = QPushButton('Run')
-        vbox.addWidget(targetbutton,0,0)
-        vbox.addWidget(posbutton,0,1)
-        vbox.addWidget(runbutton,0,2)
+        exitbutton = QPushButton('Exit')
+        vbox.addWidget(targetbutton, 0, 0)
+        vbox.addWidget(posbutton, 0, 1)
+        vbox.addWidget(runbutton, 0, 2)
+        vbox.addWidget(exitbutton, 0, 3)
         runbox.setLayout(vbox)
 
+        exitbutton.clicked.connect(lambda: QCoreApplication.exit())
+        targetbutton.clicked.connect(lambda: self.Line1.setText(self.Line0.text()))
+        posbutton.clicked.connect(lambda: self.Line2.setText(self.Line0.text()))
 
         groupbox = QGroupBox('Board')
         zero_zero_button = QPushButton('0-0')
@@ -112,14 +122,14 @@ class ChessGUI(QWidget):
 
         vbox = QGridLayout()
 
-        vbox.addWidget(zero_zero_button,0,0)
-        vbox.addWidget(zero_one_button,0,1)
-        vbox.addWidget(zero_two_button,0,2)
-        vbox.addWidget(zero_three_button,0,3)
-        vbox.addWidget(zero_four_button,0,4)
-        vbox.addWidget(zero_five_button,0,5)
-        vbox.addWidget(zero_six_button,0,6)
-        vbox.addWidget(zero_seven_button,0,7)
+        vbox.addWidget(zero_zero_button, 0, 0)
+        vbox.addWidget(zero_one_button, 0, 1)
+        vbox.addWidget(zero_two_button, 0, 2)
+        vbox.addWidget(zero_three_button, 0, 3)
+        vbox.addWidget(zero_four_button, 0, 4)
+        vbox.addWidget(zero_five_button, 0, 5)
+        vbox.addWidget(zero_six_button, 0, 6)
+        vbox.addWidget(zero_seven_button, 0, 7)
 
         vbox.addWidget(one_zero_button, 1, 0)
         vbox.addWidget(one_one_button, 1, 1)
@@ -186,17 +196,116 @@ class ChessGUI(QWidget):
         groupbox.setLayout(vbox)
 
         grid = QGridLayout()
-        grid.addWidget(selectbox,0,0)
-        grid.addWidget(statusbox,1,0)
+        grid.addWidget(selectbox, 0, 0)
+        grid.addWidget(statusbox, 1, 0)
         grid.addWidget(groupbox, 2, 0)
-        grid.addWidget(runbox, 3,0)
+        grid.addWidget(runbox, 3, 0)
         self.setLayout(grid)
+
+        zero_zero_button.clicked.connect(lambda: self.zero_zero())
+        zero_one_button.clicked.connect(lambda: self.zero_one())
+        zero_two_button.clicked.connect(lambda: self.zero_two())
+        zero_three_button.clicked.connect(lambda: self.zero_three())
+        zero_four_button.clicked.connect(lambda: self.zero_four())
+        zero_five_button.clicked.connect(lambda: self.zero_five())
+        zero_six_button.clicked.connect(lambda: self.zero_six())
+        zero_seven_button.clicked.connect(lambda: self.zero_seven())
+
+        one_zero_button.clicked.connect(lambda: self.one_zero())
+        one_one_button.clicked.connect(lambda: self.one_one())
+        one_two_button.clicked.connect(lambda: self.one_two())
+        one_three_button.clicked.connect(lambda: self.one_three())
+        one_four_button.clicked.connect(lambda: self.one_four())
+        one_five_button.clicked.connect(lambda: self.one_five())
+        one_six_button.clicked.connect(lambda: self.one_six())
+        one_seven_button.clicked.connect(lambda: self.one_seven())
+
+        two_zero_button.clicked.connect(lambda: self.two_zero())
+        two_one_button.clicked.connect(lambda: self.two_one())
+        two_two_button.clicked.connect(lambda: self.two_two())
+        two_three_button.clicked.connect(lambda: self.two_three())
+        two_four_button.clicked.connect(lambda: self.two_four())
+        two_five_button.clicked.connect(lambda: self.two_five())
+        two_six_button.clicked.connect(lambda: self.two_six())
+        two_seven_button.clicked.connect(lambda: self.two_seven())
+
+    def zero_zero(self):
+        self.Line0.setText(f'{str(self.array[0][0])}')
+
+    def zero_one(self):
+        self.Line0.setText(f'{str(self.array[0][1])}')
+
+    def zero_two(self):
+        self.Line0.setText(f'{str(self.array[0][2])}')
+
+    def zero_three(self):
+        self.Line0.setText(f'{str(self.array[0][3])}')
+
+    def zero_four(self):
+        self.Line0.setText(f'{str(self.array[0][4])}')
+
+    def zero_five(self):
+        self.Line0.setText(f'{str(self.array[0][5])}')
+
+    def zero_six(self):
+        self.Line0.setText(f'{str(self.array[0][6])}')
+
+    def zero_seven(self):
+        self.Line0.setText(f'{str(self.array[0][7])}')
+
+    def one_zero(self):
+        self.Line0.setText(f'{str(self.array[1][0])}')
+
+    def one_one(self):
+        self.Line0.setText(f'{str(self.array[1][1])}')
+
+    def one_two(self):
+        self.Line0.setText(f'{str(self.array[1][2])}')
+
+    def one_three(self):
+        self.Line0.setText(f'{str(self.array[1][3])}')
+
+    def one_four(self):
+        self.Line0.setText(f'{str(self.array[1][4])}')
+
+    def one_five(self):
+        self.Line0.setText(f'{str(self.array[1][5])}')
+
+    def one_six(self):
+        self.Line0.setText(f'{str(self.array[1][6])}')
+
+    def one_seven(self):
+        self.Line0.setText(f'{str(self.array[1][7])}')
+
+    def two_zero(self):
+        self.Line0.setText(f'{str(self.array[2][0])}')
+
+    def two_one(self):
+        self.Line0.setText(f'{str(self.array[2][1])}')
+
+    def two_two(self):
+        self.Line0.setText(f'{str(self.array[2][2])}')
+
+    def two_three(self):
+        self.Line0.setText(f'{str(self.array[2][3])}')
+
+    def two_four(self):
+        self.Line0.setText(f'{str(self.array[2][4])}')
+
+    def two_five(self):
+        self.Line0.setText(f'{str(self.array[2][5])}')
+
+    def two_six(self):
+        self.Line0.setText(f'{str(self.array[2][6])}')
+
+    def two_seven(self):
+        self.Line0.setText(f'{str(self.array[2][7])}')
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     gui = QStackedWidget()
-    main = ChessGUI()
+    main = ChessGUI(playboard)
     gui.addWidget(main)
     gui.setWindowTitle("chess-ai-python-raspberrypi-shi3do")
     gui.resize(1000, 400)
