@@ -578,7 +578,7 @@ if __name__ == "__main__":
     main = ChessGUI(playboard)
     chessvisualizer.visual(playboard)
     gui.addWidget(main)
-    gui.setWindowTitle("chess-ai-python-raspberrypi by SHI3DO")
+    gui.setWindowTitle("chess-alone by SHI3DO")
     gui.resize(1600, 400)
     gui.setWindowIcon(QIcon("./src/chess-ai-python-raspberrypi-logo.png"))
     gui.show()
