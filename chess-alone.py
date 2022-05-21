@@ -32,7 +32,7 @@ class ChessGUI(QWidget):
         self.pixlabel = QLabel()
         self.board = QPixmap()
         self.board.load('./src/res/chess.png')
-        self.board = self.board.scaled(800, 800)
+        self.board = self.board.scaled(400, 400)
         self.initUI()
         self.array = array
 
@@ -580,5 +580,6 @@ if __name__ == "__main__":
     gui.addWidget(main)
     gui.setWindowTitle("chess-alone by SHI3DO")
     gui.setWindowIcon(QIcon("./src/chess-ai-python-raspberrypi-logo.png"))
-    gui.showMaximized()
+    gui.show()
+    gui.setWindowFlag(Qt.WindowMaximizeButtonHint, True)
     app.exec_()
