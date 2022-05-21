@@ -7,8 +7,8 @@ def visual(array):
     width = len(array)
     height = len(array[0])
 
-    Size = 150
-    CSize = 130
+    Size = 30
+    CSize = 20
     SizeW = Size * width
     SizeH = Size * height
     canvas = Image.new("RGBA", (SizeW, SizeH), color="#ffffff")
