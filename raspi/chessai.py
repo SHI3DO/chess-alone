@@ -24,12 +24,12 @@ def chessai(array, color: str):
                                              str(myplayer[i]).split(':')[2]))
         returnvalarray.append(tmparray)
 
-    for k in range(0, len(returnvalarray)):
+    for k in range(0, int(len(returnvalarray)/2)):
         playerid = returnvalarray[k][0]
         x = 0
         y = 0
-        for i in range(len(array)):
-            for j in range(len(array[i])):
+        for i in range(int(len(array)/2)):
+            for j in range(int(len(array[i])/2)):
                 if array[i][j] == playerid:
                     x = i
                     y = j
@@ -37,15 +37,15 @@ def chessai(array, color: str):
 
         returnvalarray[k].append([x, y])
 
-    for k in range(0, len(returnvalarray)):
+    for k in range(0, int(len(returnvalarray)/2)):
         if len(returnvalarray[k][1]) > 0:
             # 각각
             for j in range(0, len(returnvalarray[k][1])):
                 playerid = returnvalarray[k][1][j]
                 x = 0
                 y = 0
-                for i in range(len(array)):
-                    for j in range(len(array[i])):
+                for i in range(int(len(array)/2)):
+                    for j in range(int(len(array[i])/2)):
                         if array[i][j] == playerid:
                             x = i
                             y = j
