@@ -45,14 +45,10 @@ class ChessGUI(QWidget):
         self.pixlabel.setPixmap(self.board)
         selectbox = QGroupBox('Selection')
         vbox = QGridLayout()
-        vbox.addWidget(self.Line0)
+        vbox.addWidget(self.Line0,0,0)
+        vbox.addWidget(self.Line1, 0, 1)
+        vbox.addWidget(self.Line2, 0, 2)
         selectbox.setLayout(vbox)
-
-        statusbox = QGroupBox('Status')
-        vbox = QGridLayout()
-        vbox.addWidget(self.Line1, 0, 0)
-        vbox.addWidget(self.Line2, 0, 1)
-        statusbox.setLayout(vbox)
 
         runbox = QGroupBox('Input')
         vbox = QGridLayout()
@@ -226,7 +222,7 @@ class ChessGUI(QWidget):
 
         rightgroupbox = QGroupBox('User')
         vbox = QGridLayout()
-        vbox.addWidget(statusbox)
+        vbox.addWidget(selectbox)
         vbox.addWidget(groupbox)
         vbox.addWidget(runbox)
         rightgroupbox.setLayout(vbox)

@@ -32,7 +32,7 @@ class ChessGUI(QWidget):
         self.pixlabel = QLabel()
         self.board = QPixmap()
         self.board.load('./src/res/chess.png')
-        self.board = self.board.scaled(400, 400)
+        self.board = self.board.scaled(800, 800)
         self.initUI()
         self.array = array
 

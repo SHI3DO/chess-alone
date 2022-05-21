@@ -1,3 +1,12 @@
+calculating max benefit for white
+calculating min benefit for black
+max 1290
+min -1240
+heuristic [1290, -1290]
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
 wrapped C/C++ object of type QTextEdit has been deleted
 wrapped C/C++ object of type QTextEdit has been deleted
 wrapped C/C++ object of type QTextEdit has been deleted
