@@ -187,7 +187,7 @@ def calc(playboard):
                 loc.append(i)
                 break
 
-    #boardprinter.doprint(thirdarrayinput[loc[0]])
+    boardprinter.doprint(thirdarrayinput[loc[0]])
     previousarray.clear()
     previousarray = copy.deepcopy(thirdarrayinput[loc[0]])
 

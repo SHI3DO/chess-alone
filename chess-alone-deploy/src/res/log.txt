@@ -1,0 +1,5 @@
+calculating max benefit for white
+calculating min benefit for black
+max 1260
+min -350
+heuristic [1260, -1250]

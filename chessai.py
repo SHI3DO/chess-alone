@@ -85,10 +85,10 @@ def chessai(array, color: str):
 
     # print("------------------\n\n")
     for i in range(0, len(nextgenarray)):
-        # print(i)
-        # boardprinter.doprint(nextgenarray[i])
-        # print(heuristic.calculate(nextgenarray[i]))
-        # print("\n\n")
+        print(i)
+        boardprinter.doprint(nextgenarray[i])
+        print(heuristic.calculate(nextgenarray[i]))
+        print("\n\n")
         pass
 
     return nextgenarray
