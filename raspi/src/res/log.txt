@@ -1,0 +1,8 @@
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
+wrapped C/C++ object of type QTextEdit has been deleted
