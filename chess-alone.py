@@ -581,5 +581,5 @@ if __name__ == "__main__":
     gui.setWindowTitle("chess-alone by SHI3DO")
     gui.resize(1600, 400)
     gui.setWindowIcon(QIcon("./src/chess-ai-python-raspberrypi-logo.png"))
-    gui.show()
+    gui.showMaximized()
     app.exec_()
